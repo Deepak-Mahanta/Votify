@@ -5,15 +5,18 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const db = require('./db');
-// const bodyParser = require('body-parser'); 
 
 // Middleware
-// app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true, // If using cookies or authorization headers
 }));
+
+// Health check or root route
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
 
 // Routers
 const userRoutes = require('./routes/userRoutes');
