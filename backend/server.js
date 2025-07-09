@@ -26,7 +26,9 @@ app.use('/user', userRoutes);
 app.use('/candidate', candidateRoutes);
 
 // Start server
+// Start server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  const baseUrl = process.env.REACT_BASE_URL || `http://localhost:${PORT}`;
+  console.log(`✅ Server running on ${baseUrl}`);
 });
