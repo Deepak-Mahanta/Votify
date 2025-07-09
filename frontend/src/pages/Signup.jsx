@@ -43,7 +43,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[url('public/india.jpg')] bg-cover bg-center p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[url('/india.jpg')] bg-cover bg-center p-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md"
