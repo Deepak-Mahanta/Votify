@@ -8,9 +8,17 @@ const db = require('./db');
 
 // Middleware
 app.use(express.json());
+const allowedOrigins = process.env.FRONTEND_URL?.split(',') || [];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true, // If using cookies or authorization headers
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
 
 // Health check or root route
