@@ -8,7 +8,10 @@ const db = require('./db');
 
 // Middleware
 app.use(express.json());
-const allowedOrigins = process.env.FRONTEND_URL?.split(',') || [];
+const allowedOrigins = process.env.FRONTEND_URL?.split(',') || [
+  'http://localhost:5173',
+  'https://votify-three.vercel.app'
+];
 
 app.use(cors({
   origin: function (origin, callback) {
