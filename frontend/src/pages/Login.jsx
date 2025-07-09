@@ -10,7 +10,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`, data);
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`, data, { withCredentials: true });
 
       if (res.status === 200 && res.data.token && res.data.user?.role) {
         const { token, user } = res.data;
